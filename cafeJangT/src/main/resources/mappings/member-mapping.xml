@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MemberDAO">
+	<select id="getMember" parameterType="String" resultType="member">
+		SELECT * FROM member WHERE id=#{id}
+	</select>
+	
+	<select id="loginMember" resultType="member">
+		SELECT * FROM member WHERE id=#{id} AND pwd=#{pwd} AND useyn='1'
+	</select>
+	
+	<insert id="insertMember">
+		INSERT INTO member (id, pwd, name, email, phone)
+		VALUES(#{id}, #{pwd}, #{name}, #{email}, #{phone})
+	</insert>
+	
+	<select id="getMemberByNameAndEmail" resultType="member">
+		SELECT * FROM member WHERE name=#{name} AND email=#{email}
+	</select>
+	
+	<select id="getMemberByIdAndNameAndEmail" resultType="member">
+		SELECT * FROM member WHERE id=#{id} AND name=#{name} AND email=#{email}
+	</select>
+	
+	<select id="listMember" parameterType="String" resultType="member">
+		SELECT * FROM member 
+		WHERE name LIKE '%'||#{name}||'%'
+		ORDER BY regdate DESC
+	</select>
+	
+	<update id="updateMember">
+		UPDATE member 
+		   SET pwd=#{pwd}, email=#{email}, phone=#{phone}
+		 WHERE id=#{id}
+	</update>
+	
+	<!-- 회원 탈퇴(회원) -->
+	<!-- 일단 테스트 해보자 -->
+	<update id="updateMemberUseyn">
+		UPDATE member
+		   SET useyn='0'
+		 WHERE id=#{id}
+	</update>
+	
+	<update id="resetMemberUseyn">
+		UPDATE member
+		   SET useyn='1'
+		 WHERE id=#{id}
+	</update>
+	
+	<!-- 관리자 -->
+	<select id="getMemberAllList" resultType="member">
+		SELECT *
+		  FROM member
+		 ORDER BY regdate DESC
+	</select>
+	
+	<delete id="adminDeleteMember">
+		DELETE 
+		  FROM member
+		 WHERE id=#{id}
+	</delete>
+</mapper>

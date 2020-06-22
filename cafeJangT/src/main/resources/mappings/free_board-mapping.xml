@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="FreeBoardDAO">
+
+	<select id="listAllFreeBoard" resultType="free_board">
+		SELECT *
+		  FROM free_board
+		 ORDER BY regdate DESC
+	</select>
+
+	<!-- 닉네임 별 -->
+	<select id="listFreeBoard" parameterType="String" resultType="free_board">
+		 SELECT *
+		  FROM free_board
+		 WHERE m_id=#{m_id}
+		 ORDER BY fseq DESC
+	</select>
+
+	<select id="getFreeBoard" parameterType="int" resultType="free_board">
+		SELECT *
+		  FROM free_board
+		 WHERE fseq=#{fseq}
+	</select>
+	
+	<insert id="insertFreeBoard">
+		INSERT INTO free_board(fseq, m_id, subject, content, useyn)
+		VALUES(free_board_seq.nextval, #{m_id}, #{subject}, #{content}, '1')
+	</insert>
+	
+	<update id="updateFreeBoard">
+		UPDATE free_board
+		SET subject=#{subject}, content=#{content}
+		WHERE fseq=#{fseq}					
+	</update>
+	
+	<update id="plusFreeHit">
+		UPDATE free_board
+		   SET hit = hit + 1
+		 WHERE fseq=#{fseq}
+	</update>
+	
+	<delete id="deleteFreeBoard">
+		DELETE
+		  FROM free_board
+		 WHERE fseq=#{fseq}
+	</delete>
+
+	<delete id="deleteFreeBoardReply">
+		DELETE
+		  FROM free_board_reply
+		 WHERE fseq=#{fseq}
+	</delete>
+	
+	<!-- 일단 테스트 해보자 -->
+	<update id="updateFbUseyn">
+		UPDATE free_board
+		   SET useyn='0'
+		 WHERE m_id=#{m_id}
+	</update>
+	
+	<update id="resetFbUseyn">
+		UPDATE free_board
+		   SET useyn='1'
+		 WHERE m_id=#{m_id}
+	</update>
+</mapper>

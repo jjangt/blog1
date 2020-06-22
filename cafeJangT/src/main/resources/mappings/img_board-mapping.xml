@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ImgBoardDAO">
+
+	<select id="listAllImgBoard" resultType="img_board">
+		SELECT *
+		  FROM img_board
+		 ORDER BY regdate DESC
+	</select>
+
+	<!-- 닉네임으로 검색 시 -->
+	<select id="listImgBoard" parameterType="String" resultType="img_board">
+		SELECT *
+		  FROM img_board
+		 WHERE m_id=#{m_id}
+		 ORDER BY ibseq DESC
+	</select>
+
+	<select id="getImgBoard" resultType="img_board">
+		SELECT *
+		  FROM img_board
+		 WHERE ibseq=#{ibseq}
+	</select>
+	
+	<insert id="insertImgBoard">
+		INSERT INTO img_board(ibseq, m_id, subject, content, thum_img,
+								image1, image1_name, image1_brand, image1_price,
+								image2, image2_name, image2_brand, image2_price,
+								image3, image3_name, image3_brand, image3_price, useyn)
+		VALUES(img_board_seq.nextval, #{m_id}, #{subject}, #{content}, #{thum_img},
+				#{image1}, #{image1_name}, #{image1_brand}, #{image1_price},
+				#{image2}, #{image2_name}, #{image2_brand}, #{image2_price},
+				#{image3}, #{image3_name}, #{image3_brand}, #{image3_price}, '1')
+	</insert>
+	
+	<update id="updateImgBoard">
+		UPDATE img_board
+		   SET subject=#{subject}, content=#{content}, thum_img=#{thum_img},
+			   image1=#{image1}, image1_name=#{image1_name}, image1_price=#{image1_price},
+			   image2=#{image2}, image2_name=#{image2_name}, image2_price=#{image2_price},
+			   image3=#{image3}, image3_name=#{image3_name}, image3_price=#{image3_price}
+		WHERE ibseq=#{ibseq}					
+	</update>
+	
+	<update id="plusImgHit">
+		UPDATE img_board
+		   SET hit = hit + 1
+		 WHERE ibseq=#{ibseq}
+	</update>
+	
+	<delete id="deleteImgBoard">
+		DELETE
+		  FROM img_board
+		 WHERE ibseq=#{ibseq}
+	</delete>
+	
+	<delete id="deleteImgBoardReply">
+		DELETE
+		  FROM img_board_reply
+		 WHERE ibseq=#{ibseq}
+	</delete>
+	
+	<!-- 일단 테스트 해보자 -->
+	<update id="updateIbUseyn">
+		UPDATE img_board
+		   SET useyn='0'
+		 WHERE m_id=#{m_id}
+	</update>
+	
+	<update id="resetIbUseyn">
+		UPDATE img_board
+		   SET useyn='1'
+		 WHERE m_id=#{m_id}
+	</update>
+</mapper>

@@ -1,0 +1,310 @@
+@charset "UTF-8";
+
+.clear{clear:both;}
+
+#logo {
+    width:300px;
+    height:100px;
+    margin-left: 45%;
+}
+
+nav {
+	margin: 10px;
+}
+
+body {
+	background-color: #F6F3F3;
+}
+
+ul {
+	list-style: none;
+	text-align: center;
+	border-top: 2px solid #c0c0c0;
+	border-bottom: 2px solid #c0c0c0;
+	padding: 10px 0;
+}
+
+ul li {
+	display: inline;
+	text-transform: uppercase;
+	padding: 0 50px;
+	letter-spacing: 10px;
+}
+
+ul li a {
+	text-decoration: none;
+	color: black;
+}
+
+ul li a:hover {
+	text-decoration: underline;
+	color: #c0c0c0;
+}
+
+hr {
+	border-top: 2px solid #c0c0c0;
+}
+
+footer #copy {
+	min-height: 150px;
+	background-color: #666666;
+	color: white;
+	margin-top: 20px;
+	text-align: center;
+	background-image: url(../images/under_logo.png);
+	background-repeat: no-repeat;
+	background-position: 20px center;
+}
+
+#main_img {
+	text-align: center;
+} 
+
+#main_img img {
+    margin:9px 0 0 0; 
+    width: 35%;
+}
+
+#sub_img {
+	text-align: center;
+}
+
+#sub_img img {
+	margin: 9px 0 0 0;
+	width: 35%;
+}
+
+article {
+	width: 550px;
+	padding-right: 10px;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 1em;
+	line-height: 1.5em; 
+	position: relative;
+	left: 32%;
+}
+
+article h1, div h1 {
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 45px;
+	color: #A593E0;
+	margin: 20px 0;
+	font-weight: normal;
+}
+
+article h2, div h2{
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 30px; 
+	color: #A593E0;
+	padding-bottom: 15px;
+	border-bottom: 1px dotted #666; /* 제목 하단 부에 점선을 넣어 제목이라는 것을 표시해 줍니다. */	
+}
+
+article h3, div h3{
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 20px; 
+	color: #A593E0;
+	padding-bottom: 15px;
+	border-bottom: 1px dotted #666; /* 제목 하단 부에 점선을 넣어 제목이라는 것을 표시해 줍니다. */	
+}
+
+form {
+	margin: 10px 0 0 0;
+	width: 670px;
+}
+
+form fieldset {
+	padding: 10px 0 0px 5px;
+	border: none;
+}
+
+form fieldset.log legend{
+	font-size: 30px; /* 제목으로 사용되기 때문에 크기를 크게 잡아 줍니다. */	
+	font-family: Verdana, Geneva, sans-serif;
+	color: #A593E0;
+	border-bottom: 1px dotted #666; /* 제목 하단 부에 점선을 넣어 제목이라는 것을 표시해 줍니다. */
+	width: 300px; /* 전체 크기를 잡아 줍니다. */
+	padding: 10px 0; /* 위와 아래로 여백을 주고 좌우로는 여백을 없애버립니다. 
+                                      여백을 안 주게 되면 밑줄과 너무 붙어버려 보기에 좋지 않습니다. */
+    text-align: center;
+}
+
+form fieldset.regist legend{
+	font-size: 30px; /* 제목으로 사용되기 때문에 크기를 크게 잡아 줍니다. */	
+	font-family: Verdana, Geneva, sans-serif;
+	color: #A593E0;
+	border-bottom: 1px dotted #666; /* 제목 하단 부에 점선을 넣어 제목이라는 것을 표시해 줍니다. */
+	width: 380px; /* 전체 크기를 잡아 줍니다. */
+	padding: 10px 0; /* 위와 아래로 여백을 주고 좌우로는 여백을 없애버립니다. 
+                                      여백을 안 주게 되면 밑줄과 너무 붙어버려 보기에 좋지 않습니다. */
+    text-align: center;
+}
+
+form label {
+	width: 140px; /* 전체의 크기를 정의합니다. */
+	/*float: left;   왼쪽으로 이동시킵니다. */
+	margin: 5px 0; /* 마진을 이용해서 상하로 간격을 줍니다. */
+}
+
+form input {
+	margin: 5px 0; /* label과 마찬가지로 여기도 동일하게 상하로 간격을 줍니다. */
+	border: 1px solid #999; /* input 박스의 테두리 모양을 정의해 줍니다. */
+	background-color: #FCFDEA; /* 배경색을 이용하여 바탕화면 색과 차별을 줍니다. */
+}
+
+form input.id {
+	width: 100px;
+	height: 18px;
+}
+
+form #buttons {
+	margin: 20px 0 0 0;
+}
+
+form  .submit,form  .cancel {
+	height: 30px; /* 버튼의 세로 크기를 정의합니다. */
+	width: 90px; /* 버튼의 가로 크기를 정의합니다. */
+	border: 0; /* 버튼의 테두리를 정의합니다. */
+	cursor: pointer;
+	border-radius: 30px; /* border-radius를 통해 버튼을 둥그렇게 만듭니다. */
+	box-shadow: 3px 3px 2px #ccc; /* box-shadow를 이용해서 그림자를 만듭니다. */
+	font-size: 12px; /* 글꼴 사이즈를 조절합니다. */
+	background-repeat: repeat-x;
+	background-position: center center;
+	color: #fff;
+	margin: auto;
+}
+
+form  .submit {
+	/*background-image: url(../images/submit_back.jpg);*/
+	background: linear-gradient(to right, #A593E0, #E0E3DA);
+}
+
+form  .cancel {
+	/*background-image: url(../images/cancel_back.jpg);*/
+	background: linear-gradient(to right, #A593E0, #E0E3DA);	
+}
+
+form  .ad_submit{
+	height: 30px; /* 버튼의 세로 크기를 정의합니다. */
+	width: 90px; /* 버튼의 가로 크기를 정의합니다. */
+	border: 0; /* 버튼의 테두리를 정의합니다. */
+	cursor: pointer;
+	border-radius: 30px; /* border-radius를 통해 버튼을 둥그렇게 만듭니다. */
+	box-shadow: 3px 3px 2px #ccc; /* box-shadow를 이용해서 그림자를 만듭니다. */
+	font-size: 12px; /* 글꼴 사이즈를 조절합니다. */
+	background-repeat: repeat-x;
+	background-position: center center;
+	color: #fff;
+	margin: auto;
+	position: relative;
+	left: 20%;
+}
+
+form  .ad_submit {
+	/*background-image: url(../images/submit_back.jpg);*/
+	background: linear-gradient(to right, #A593E0, #E0E3DA);
+}
+
+table#cartList {
+    border-collapse:collapse;    /* border 사이의 간격 없앰 */
+    border-top: 2px solid  #333;    
+    border-bottom: 1px solid  #333; 
+    width:100%;                  /* 전체 테이블 길이 설정 */
+    margin-bottom: 20px;
+}
+
+table#cartList th, td{	
+    border-bottom: 1px dotted  #333; 
+	text-align: center;
+}
+
+article table#notice {
+	width: 670px;
+	border-collapse: collapse;
+	border-top: 1px solid #999;
+}
+
+article table#notice th {
+	height: 20px;
+	width: 70px;
+	font-size: 14px; 
+	font-weight: bold;
+	padding: 5px; 
+	color: #FFF;
+	background-color: #c0c0c0;
+	border-bottom: 1px dotted #999;
+}
+
+article table#notice td {
+	text-align: left;
+	padding: 6px 0;
+	border-bottom: 1px dotted #999;
+}
+
+article table#notice tr:hover {
+	background-color: #DDF;
+	color: red;
+}
+
+.thum  img{
+	width: 150px; 
+	height : 130px; 
+	margin: 10px 20px 0 0;
+}
+
+.img_title {
+	display: inline-block; 
+	width: 200px; 
+	white-space: nowrap; 
+	overflow: hidden; 
+	text-overflow: ellipsis;
+}
+
+.thum_main img {
+	width: 300px; 
+	height : 270px;
+	display : inline;
+}
+
+.thum_main{
+	display : block ;
+  	text-align : center ;
+}
+
+.img_detail {
+	width: 30%;
+	height: auto;
+	margin-right: 15px;
+	font-size: 13px;
+	float: left;
+}
+
+.img_detail img {
+	width: 100%;
+	height: 100px;
+}
+
+.hr-sect {
+	display: flex;
+	flex-basis: 100%;
+	align-items: center;
+	color: rgba(0, 0, 0, 0.35);
+	font-size: 12px;
+	margin: 8px 0px;
+}
+.hr-sect::before,
+.hr-sect::after {
+	content: "";
+	flex-grow: 1;
+	background: rgba(0, 0, 0, 0.35);
+	height: 1px;
+	font-size: 0px;
+	line-height: 0px;
+	margin: 0px 16px;
+}
+
+.i-button {
+	position: absolute;
+	left: 30%;
+}

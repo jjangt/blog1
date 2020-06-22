@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="FreeBoardReplyDAO">
+	
+	<select id="getFreeBoardReplyList" parameterType="int" resultType="free_board_reply">
+		SELECT *
+		  FROM free_board_reply
+		 WHERE fseq=#{fseq}
+		 ORDER BY regdate DESC
+	</select>
+	
+	<insert id="saveFreeBoardReply" parameterType="free_board_reply">
+		INSERT INTO free_board_reply(fbrseq, fseq, content, m_id, useyn)
+		VALUES(fbr_seq.nextval, #{fseq}, #{content}, #{m_id}, '1')
+	</insert>
+	
+	<update id="updateFreeBoardReply" parameterType="free_board_reply">
+		UPDATE free_board_reply
+		   SET content=#{content}, modifydate=#{modifydate}
+		 WHERE fbrseq=#{fbrseq}
+	</update>
+	
+	<delete id="deleteFreeBoardReply">
+		DELETE FROM free_board_reply
+		 WHERE fbrseq=#{fbrseq}
+	</delete>
+	
+	<insert id="saveAdminFreeBoardReply" parameterType="free_board_reply">
+		INSERT INTO free_board_reply(fbrseq, fseq, content, a_id)
+		VALUES(fbr_seq.nextval, #{fseq}, #{content}, #{a_id})
+	</insert>
+	
+	<!-- 일단 테스트 해보자 -->
+	<update id="updateFbrUseyn">
+		UPDATE free_board_reply
+		   SET useyn='0'
+		 WHERE m_id=#{m_id}
+	</update>
+	
+	<update id="resetFbrUseyn">
+		UPDATE free_board_reply
+		   SET useyn='1'
+		 WHERE m_id=#{m_id}
+	</update>
+</mapper>

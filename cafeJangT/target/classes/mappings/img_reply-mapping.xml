@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ImgBoardReplyDAO">
+
+	<select id="getImgBoardReplyList" parameterType="int" resultType="img_board_reply">
+		SELECT *
+		  FROM img_board_reply
+		 WHERE ibseq=#{ibseq}
+		 ORDER BY regdate DESC
+	</select>
+	
+	<insert id="saveImgBoardReply" parameterType="img_board_reply">
+		INSERT INTO img_board_reply(ibrseq, ibseq, content, m_id, useyn)
+		VALUES(ibr_seq.nextval, #{ibseq}, #{content}, #{m_id}, '1')
+	</insert>
+	
+	<update id="updateImgBoardReply" parameterType="img_board_reply">
+		UPDATE img_board_reply
+		   SET content=#{content}, modifydate=#{modifydate}
+		 WHERE ibrseq=#{ibrseq}
+	</update>
+	
+	<delete id="deleteImgBoardReply" parameterType="int">
+		DELETE FROM img_board_reply
+		 WHERE ibrseq=#{ibrseq}
+	</delete>
+
+		
+	<insert id="saveAdminImgBoardReply" parameterType="img_board_reply">
+		INSERT INTO img_board_reply(ibrseq, ibseq, content, a_id)
+		VALUES(ibr_seq.nextval, #{ibseq}, #{content}, #{a_id})
+	</insert>
+
+	<!-- 일단 테스트 해보자 -->
+	<update id="updateIbrUseyn">
+		UPDATE img_board_reply
+		   SET useyn='0'
+		 WHERE m_id=#{m_id}
+	</update>
+	
+	<update id="resetIbrUseyn">
+		UPDATE img_board_reply
+		   SET useyn='1'
+		 WHERE m_id=#{m_id}
+	</update>
+</mapper>

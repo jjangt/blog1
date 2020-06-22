@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="QnaDAO">
+	<!-- id를 조건으로 select하기 때문에 parameterType을 String으로 -->
+	<select id="listQna" parameterType="String" resultType="qna">
+		SELECT * 
+		  FROM qna 
+		 WHERE m_id=#{m_id} 
+		 ORDER BY qseq DESC
+	</select>
+	
+	<select id="getQna" parameterType="int" resultType="qna">
+		SELECT * 
+		  FROM qna 
+		 WHERE qseq=#{qseq}
+	</select>
+	
+	<insert id="insertQna">
+		INSERT INTO qna(qseq, subject, content, m_id, useyn) 
+		VALUES(qna_seq.nextval, #{subject}, #{content}, #{m_id}, '1')
+	</insert>
+	
+	<select id="listAllQna" resultType="qna">
+		SELECT * 
+		  FROM qna 
+		 ORDER BY regdate DESC
+	</select>
+	
+	<update id="updateQna">
+		UPDATE qna
+		   SET subject=#{subject}, content=#{content}
+		 WHERE qseq=#{qseq}
+	</update>
+	
+	<delete id="deleteQna">
+		DELETE 
+		  FROM qna
+		 WHERE qseq=#{qseq}
+	</delete>
+	
+	<!-- 일단 테스트 해보자 -->
+	<update id="updateQnaUseyn">
+		UPDATE qna
+		   SET useyn='0'
+		 WHERE m_id=#{m_id}
+	</update>
+	
+	<update id="resetQnaUseyn">
+		UPDATE qna
+		   SET useyn='1'
+		 WHERE m_id=#{m_id}
+	</update>
+</mapper>
